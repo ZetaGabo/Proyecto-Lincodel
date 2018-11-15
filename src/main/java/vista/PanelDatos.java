@@ -1,54 +1,48 @@
 package vista;
 
-import java.awt.BorderLayout;
+import java.awt.GridLayout;
+import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class PanelDatos extends JPanel{
-	public PanelDatos() {
-		this.inicializarComponentes();
-	}
+public class PanelDatos extends JPanel {
 
-	private void inicializarComponentes() {
-		this.setLayout(new BorderLayout(0, 0));
-		
-		JPanel organizacion = new JPanel();
-		this.add(organizacion, BorderLayout.NORTH);
-		
-		JPanel modDatos = new JPanel();
-		modDatos.setToolTipText("");
-		this.add(modDatos, BorderLayout.SOUTH);
-		modDatos.setLayout(new BorderLayout(0, 0));
-		
-		JPanel panNombre = new JPanel();
-		modDatos.add(panNombre, BorderLayout.NORTH);
-		
-		JLabel lblNombre = new JLabel("NOMBRE");
-		panNombre.add(lblNombre);
-		
-		JTextField ingNombre = new JTextField();
-		panNombre.add(ingNombre);
-		ingNombre.setColumns(10);
-		
-		JPanel panCodigo = new JPanel();
-		modDatos.add(panCodigo, BorderLayout.CENTER);
-		
-		JLabel lblCodigo = new JLabel("CODIGO");
-		panCodigo.add(lblCodigo);
-		
-		JTextField ingCodigo = new JTextField();
-		panCodigo.add(ingCodigo);
-		ingCodigo.setColumns(10);
-		
-		JPanel panCantidad = new JPanel();
-		modDatos.add(panCantidad, BorderLayout.SOUTH);
-		
-		JLabel lblCantidad = new JLabel("CANTIDAD");
-		panCantidad.add(lblCantidad);
-		
-		JTextField ingCantidad = new JTextField();
-		panCantidad.add(ingCantidad);
-		ingCantidad.setColumns(10);
-        }
+    GridLayout distribucion;
+    private JLabel lblNombre;
+    private JTextField ingNombre;
+    private JLabel lblCodigo;
+    private JTextField ingCodigo;
+    private JLabel lblCantidad;
+    private JTextField ingCantidad;
+    private JButton btnAgregar;
+    private JButton btnBorrar;
+
+    public PanelDatos() {
+        this.inicializarComponentes();
+    }
+
+    private void inicializarComponentes() {
+        this.distribucion = new GridLayout(4, 2, 1,100);
+        this.setLayout(distribucion);
+        this.lblNombre = new JLabel("Nombre");
+        this.add(this.lblNombre, distribucion);
+        this.ingNombre = new JTextField();
+        this.ingNombre.setColumns(10);
+        this.add(this.ingNombre, distribucion);
+        this.lblCodigo = new JLabel("Código");
+        this.add(this.lblCodigo, distribucion);
+        this.ingCodigo = new JTextField();
+        this.ingCodigo.setColumns(10);
+        this.add(this.ingCodigo, distribucion);
+        this.lblCantidad = new JLabel("Cantidad");
+        this.add(this.lblCantidad, distribucion);
+        this.ingCantidad = new JTextField();
+        this.ingCantidad.setColumns(10);
+        this.add(this.ingCantidad, distribucion);
+        this.btnAgregar = new JButton("Agregar");
+        this.add(this.btnAgregar);
+        this.btnBorrar = new JButton("Borrar");
+        this.add(this.btnBorrar);
+    }
 }

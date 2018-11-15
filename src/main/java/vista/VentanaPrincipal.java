@@ -1,52 +1,50 @@
 package vista;
 
 import java.awt.BorderLayout;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 
+public final class VentanaPrincipal extends JFrame implements ActionListener {
 
+    private PanelTabla panelTabla;
+    private PanelMenu panelMenu;
+    private PanelDatos panelDatos;
+    private GridBagConstraints c;
+    private GridBagLayout distribucion;
 
-public final class VentanaPrincipal extends JFrame {
+    /**
+     * Launch the application.
+     */
+    /**
+     * Create the frame.
+     */
+    public VentanaPrincipal() {
 
-	private PanelTabla panelTabla;
-	private PanelDatos panelDatos;
-	private Menu panelMenu;
-	
-	
-	/**
-	 * Launch the application.
-	 */
-	
+        this.inicializarComponentes();
 
-	/**
-	 * Create the frame.
-	 */
-	public VentanaPrincipal() {
-		
-		this.inicializarComponentes();
-		
-			}
-	public void inicializarComponentes() {
-		this.setTitle("Ventana de Datos");
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setBounds(100, 100, 450, 300);
-		this.setBounds(500, 500, 500, 500);
-		getContentPane().setLayout(new BorderLayout(0, 0));
-		
-		panelTabla = new PanelTabla();
-		getContentPane().add(panelTabla, BorderLayout.CENTER);
-		
-		panelDatos = new PanelDatos();
-		getContentPane().add(panelDatos, BorderLayout.WEST);
-		
-		
-		
-		panelMenu = new Menu();
-		getContentPane().add(panelMenu, BorderLayout.NORTH);
-                
-                this.setVisible(true);
-		
+    }
 
-	}
+    public void inicializarComponentes() {
+        this.setTitle("Ventana de Datos");
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.panelMenu = new PanelMenu();
+        this.add(panelMenu, BorderLayout.NORTH);
+        this.panelDatos = new PanelDatos();
+        this.add(this.panelDatos, BorderLayout.WEST);
+        this.panelTabla = new PanelTabla();
+        this.add(panelTabla, BorderLayout.CENTER);
+        this.setVisible(true);
+        pack();
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+    }
 
 }

@@ -7,8 +7,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-public class Menu extends JPanel{
-	public Menu() {
+public class PanelMenu extends JPanel{
+	public PanelMenu() {
 		this.inicializarComponentes();
 	}
 

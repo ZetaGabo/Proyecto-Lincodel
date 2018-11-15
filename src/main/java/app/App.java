@@ -6,15 +6,12 @@
 package app;
 
 import vista.VentanaIngreso;
-import vista.VentanaPrincipal;
-
 /**
  *
  * @author usuario
  */
 public class App {
     public static void main(String[] args){
-        //VentanaPrincipal v = new VentanaPrincipal();
-        VentanaIngreso a = new VentanaIngreso();
+        VentanaIngreso v1 = new VentanaIngreso();
     }
 }
