@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class PanelDatos extends JPanel {
+public class PanelDatosVentPrincipal extends JPanel {
 
     GridLayout distribucion;
     private JLabel lblNombre;
@@ -18,7 +18,7 @@ public class PanelDatos extends JPanel {
     private JButton btnAgregar;
     private JButton btnBorrar;
 
-    public PanelDatos() {
+    public PanelDatosVentPrincipal() {
         this.inicializarComponentes();
     }
 

@@ -1,20 +1,20 @@
 package vista;
 
-import java.awt.BorderLayout;
+
 
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
+
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-public class PanelTabla extends JPanel {
+public class PanelTablaVentPrincipal extends JPanel {
 
     private JTable tabla;
     private DefaultTableModel modelo;
     private JScrollPane scroll;
 
-    public PanelTabla() {
+    public PanelTablaVentPrincipal() {
         this.inicializarComponentes();
     }
 

@@ -5,13 +5,15 @@
  */
 package app;
 
-import vista.VentanaIngreso;
+import vista.*;
 /**
  *
  * @author usuario
  */
 public class App {
     public static void main(String[] args){
-        VentanaIngreso v1 = new VentanaIngreso();
+    //    VentanaIngreso v1 = new VentanaIngreso();
+            VentanaRegistro v2 = new VentanaRegistro();
+            VentanaIngreso v3 = new VentanaIngreso();
     }
 }

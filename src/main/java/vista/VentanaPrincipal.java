@@ -10,9 +10,9 @@ import javax.swing.JFrame;
 
 public final class VentanaPrincipal extends JFrame implements ActionListener {
 
-    private PanelTabla panelTabla;
-    private PanelMenu panelMenu;
-    private PanelDatos panelDatos;
+    private PanelTablaVentPrincipal panelTabla;
+    private PanelMenuVentPrincipal panelMenu;
+    private PanelDatosVentPrincipal panelDatos;
     private GridBagConstraints c;
     private GridBagLayout distribucion;
 
@@ -33,11 +33,11 @@ public final class VentanaPrincipal extends JFrame implements ActionListener {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        this.panelMenu = new PanelMenu();
+        this.panelMenu = new PanelMenuVentPrincipal();
         this.add(panelMenu, BorderLayout.NORTH);
-        this.panelDatos = new PanelDatos();
+        this.panelDatos = new PanelDatosVentPrincipal();
         this.add(this.panelDatos, BorderLayout.WEST);
-        this.panelTabla = new PanelTabla();
+        this.panelTabla = new PanelTablaVentPrincipal();
         this.add(panelTabla, BorderLayout.CENTER);
         this.setVisible(true);
         pack();
