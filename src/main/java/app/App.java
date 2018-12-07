@@ -13,7 +13,7 @@ import vista.*;
 public class App {
     public static void main(String[] args){
     //    VentanaIngreso v1 = new VentanaIngreso();
-            VentanaRegistro v2 = new VentanaRegistro();
+           // VentanaRegistro v2 = new VentanaRegistro();
             VentanaIngreso v3 = new VentanaIngreso();
     }
 }

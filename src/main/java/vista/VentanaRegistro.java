@@ -23,7 +23,7 @@ public class VentanaRegistro extends JFrame {
 
     private void inicializarComponentes() {
         setTitle("Registro");
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 621, 368);
         this.setLayout(new BoxLayout(getContentPane(), BoxLayout.X_AXIS));
 

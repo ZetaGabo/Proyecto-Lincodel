@@ -19,9 +19,9 @@ import javax.swing.SwingConstants;
 public class PanelUsuarioIngreso extends JPanel {
 
     private JLabel lblUsuario;
-    private JLabel lblContraseña;
+    private JLabel lblContrasena;
     private JTextField ingUsuario;
-    private JTextField ingContraseña;
+    private JTextField ingContrasena;
     private GridLayout distribucion;
 
     public PanelUsuarioIngreso() {
@@ -36,10 +36,10 @@ public class PanelUsuarioIngreso extends JPanel {
         this.ingUsuario = new JTextField();
         this.ingUsuario.setColumns(10);
         this.add(this.ingUsuario, distribucion);
-        this.lblContraseña = new JLabel("Contraseña");
-        this.add(this.lblContraseña, distribucion);
-        this.ingContraseña = new JTextField();
-        this.ingContraseña.setColumns(10);
-        this.add(this.ingContraseña, distribucion);
+        this.lblContrasena = new JLabel("Contrase�aa");
+        this.add(this.lblContrasena, distribucion);
+        this.ingContrasena = new JTextField();
+        this.ingContrasena.setColumns(10);
+        this.add(this.ingContrasena, distribucion);
     }
 }

@@ -1,13 +1,20 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package vista;
 
 import java.awt.BorderLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 
-public class PanelMenuVentPrincipal extends JPanel{
+public class PanelMenuVentPrincipal extends JPanel implements ActionListener{
 	public PanelMenuVentPrincipal() {
 		this.inicializarComponentes();
 	}
@@ -41,17 +48,26 @@ public class PanelMenuVentPrincipal extends JPanel{
 		
 		JMenu mnRegistro = new JMenu("Registro");
 		menu.add(mnRegistro);
-		
+                
+                
 		JMenuItem mntmVerRegistroGeneral = new JMenuItem("Ver Registro General");
 		mnRegistro.add(mntmVerRegistroGeneral);
-		
+		mntmVerRegistroGeneral.addActionListener((ActionListener) this);
+                
 		JMenuItem mntmVerRegistroDe = new JMenuItem("Ver Registro de este Ordenador");
 		mnRegistro.add(mntmVerRegistroDe);
 		
 		JMenu mnAcercaDe = new JMenu("Acerca de");
 		menu.add(mnAcercaDe);
 		
-		JMenuItem mntmAcerca = new JMenuItem("Acerca de aplicaci\u00F3n");
+		JMenuItem mntmAcerca = new JMenuItem("Acerca de aplicación");
 		mnAcercaDe.add(mntmAcerca);
+        }
+                   
+        public void actionPerformed(ActionEvent e) {
+            VentanaRegistro v = new VentanaRegistro();
+        }
+                
 	}
-}
+        
+
