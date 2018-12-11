@@ -60,7 +60,7 @@ public class PanelMenuVentPrincipal extends JPanel implements ActionListener{
 		JMenu mnAcercaDe = new JMenu("Acerca de");
 		menu.add(mnAcercaDe);
 		
-		JMenuItem mntmAcerca = new JMenuItem("Acerca de aplicación");
+		JMenuItem mntmAcerca = new JMenuItem("Acerca de aplicaciÃ³n");
 		mnAcercaDe.add(mntmAcerca);
         }
                    

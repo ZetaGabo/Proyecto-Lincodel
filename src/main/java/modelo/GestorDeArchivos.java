@@ -22,23 +22,25 @@ import java.util.stream.Collectors;
 public class GestorDeArchivos {
 
     private Usuario usuario;
-    private Codificador codificador = new Codificador();
+    private final Codificador codificador = new Codificador();
     ArrayList<Usuario> usuarios = new ArrayList<>();
     private final String RUTA = "datosAlmacenados/";
-    private final String NOMBRE = "objetos.json";
+    
 
     public GestorDeArchivos() {
 
     }
-    public boolean almacenarUsuario(String usuarioIngresado, String contraseñaIngresada){
+    public boolean almacenarUsuario(Object objeto, String NOMBRE/*objetos.json*/){
         boolean valorReturn=false;
         
-        usuario = new Usuario(usuarioIngresado,contraseñaIngresada);
-        this.usuarios.add(usuario);
         
-        Type listType =new TypeToken<List<Usuario>>() {}.getType();
+        
+        Type listType =new TypeToken<List<Object>>() {}.getType();
         Gson gson = new Gson();
-        String json = gson.toJson(usuarios,listType);
+//        ArrayList<Object> lista=this.recuperarJsonGenerico(NOMBRE);
+//        lista.add(objeto);
+        
+        String json = gson.toJson(objeto,listType);
         
         String jsonCodificado = codificador.codificarString(json);
                 
@@ -50,19 +52,29 @@ public class GestorDeArchivos {
             }
         return valorReturn;
     }
-    public ArrayList<Usuario> recuperarJsonUsuarios(){
+    public ArrayList<Object> recuperarJsonGenerico(String NOMBRE/*objetos.json*/){
         Gson gson = new Gson();
-        BufferedReader br = null;
+
+        String textDecodificado=DecoJson(NOMBRE);
+        
+        return gson.fromJson(textDecodificado, new TypeToken<List<Object>>() {}.getType());
+    }
+    
+    public ArrayList<Usuario> recuperarJsonUsuario(String NOMBRE/*objetos.json*/){
+         Gson gson = new Gson();
+
+        String textDecodificado=DecoJson(NOMBRE);
+        return gson.fromJson(textDecodificado, new TypeToken<List<Usuario>>() {}.getType());
+    }
+    private String DecoJson(String NOMBRE){
+                BufferedReader br = null;
               try {
                 br =new BufferedReader(new FileReader(RUTA+NOMBRE));
             } catch (Exception e) {
                   e.printStackTrace();
             }
               
-              String textDecodificado = codificador.decodificar(br.lines().collect(Collectors.joining()));
-              this.usuarios = gson.fromJson(textDecodificado, new TypeToken<List<Usuario>>() {}.getType());
-   
+             return codificador.decodificar(br.lines().collect(Collectors.joining()));
       
-        return this.usuarios;
     }
 }

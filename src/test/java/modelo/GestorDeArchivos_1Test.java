@@ -6,6 +6,7 @@
 package modelo;
 
 import java.util.ArrayList;
+import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -13,25 +14,21 @@ import static org.junit.Assert.*;
  *
  * @author usuario
  */
-public class GestorDeArchivosTest {
+public class GestorDeArchivos_1Test {
     
-    GestorDeArchivos g = new GestorDeArchivos();
-    
-    public GestorDeArchivosTest() {
+    public GestorDeArchivos_1Test() {
     }
 
     @Test
     public void testAlmacenarUsuario() {
-        //g.almacenarUsuario("mario", "123");
+        GestorDeArchivos g = new GestorDeArchivos();
+        Usuario u = new Usuario("mario","123",true);
+        List<Object> ob = new ArrayList<>();
+        ob.add(u);
+        String NOMBRE = "objetos.json";
+        g.almacenarUsuario(ob, NOMBRE);
     }
 
-    @Test
-    public void testRecuperarJson() {
-        ArrayList<Usuario> a= g.recuperarJsonUsuarios();
-      
-        a.forEach((usuario) -> {
-            System.out.println(usuario.toString());
-        });
-    }
+    
     
 }

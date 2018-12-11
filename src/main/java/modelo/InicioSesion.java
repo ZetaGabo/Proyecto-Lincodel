@@ -1,7 +1,8 @@
 package modelo;
 
 import java.util.ArrayList;
-import java.util.Base64;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * @author usuario
@@ -9,41 +10,44 @@ import java.util.Base64;
 public class InicioSesion {
 
     ArrayList<Usuario> usuarios;
+
     private final GestorDeArchivos gestor = new GestorDeArchivos();
+    private final String NOMBRE = "objetos.json";
 
     public InicioSesion() {
         obtenerUsuariosAlmacenado();
     }
 
-    
+    public boolean verificarUsuario(String nombreUsuarioIngresado, String contraseñaIngresada) {
 
-
-    public boolean verificarNombreUsuario(String nombreUsuarioIngresado) {
-        boolean valorReturn = false;
-        
-       
-        for (Usuario usuario : usuarios) {
-
-            valorReturn = nombreUsuarioIngresado.equalsIgnoreCase(usuario.getNombreUsuario());
-        }
-
-        return valorReturn;
-    }
-
-    public boolean verificarContraseña(String contraseñaIngresada) {
-        boolean valorReturn = false;
-
-        for (Usuario usuario : usuarios) {
-            
-        valorReturn = contraseñaIngresada.equalsIgnoreCase(usuario.getContraseña());
-
-        }
-        return valorReturn;
+        return this.usuarios.stream().anyMatch(u -> u.getContraseña().equals(contraseñaIngresada) && u.getNombreUsuario().equals(nombreUsuarioIngresado));
 
     }
 
     private void obtenerUsuariosAlmacenado() {
-        this.usuarios = this.gestor.recuperarJsonUsuarios();
+
+        this.usuarios = this.gestor.recuperarJsonUsuario(this.NOMBRE);
+
+    }
+
+    public boolean obtenerValorDeAdministrador(String nombreUsuarioIngresado, String contraseñaIngresada) {
+        boolean valorReturn = false;
+//        for (Usuario usuario : this.usuarios) {
+//            if(usuario.equals(new Usuario(nombreUsuarioIngresado, contraseñaIngresada, usuario.getPermisosDeAdministrador()))){
+//                valorReturn = usuario.getPermisosDeAdministrador();break;
+//            }
+//        }
+        for (Usuario usuario : this.usuarios) {
+
+            if (usuario.getContraseña().equals(contraseñaIngresada) && usuario.getNombreUsuario().equals(nombreUsuarioIngresado)) {
+
+                valorReturn = usuario.getPermisosDeAdministrador();
+                break;
+            }
+
+        }
+
+        return valorReturn;
 
     }
 

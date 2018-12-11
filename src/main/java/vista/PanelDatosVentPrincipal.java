@@ -44,6 +44,8 @@ public class PanelDatosVentPrincipal extends JPanel {
         this.add(this.lblCantidad, distribucion);
         this.ingCantidad = new JTextField();
         this.ingCantidad.setColumns(10);
+        
+        
         this.add(this.ingCantidad, distribucion);
         this.btnAgregar = new JButton("Agregar");
         this.add(this.btnAgregar);

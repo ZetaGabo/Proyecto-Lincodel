@@ -5,8 +5,10 @@
  */
 package modelo;
 
+import junit.framework.Assert;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import org.junit.Before;
 
 /**
  *
@@ -14,28 +16,28 @@ import static org.junit.Assert.*;
  */
 public class InicioSesionTest {
     
-    InicioSesion inicio = new InicioSesion();
+    InicioSesion inicio;
     
     public InicioSesionTest() {
     }
 
-    @Test
-    public void testCodificarString() {
-    }
-
-    @Test
-    public void testDecodificar() {
-    }
-
-    @Test
-    public void testVerificarNombreUsuario() {
-        
-        inicio.verificarNombreUsuario("mario");
-    }
-
-    @Test
-    public void testVerificarContraseña() {
-        inicio.verificarContraseña("123");
+    @Before
+    public void setUp(){
+         inicio=new InicioSesion();
     }
     
+    @Test
+    public void testVerificarUsuario() {
+        
+        assertTrue(inicio.verificarUsuario("mario", "123"));
+        
+    }
+   
+    @Test
+    public void testObtenerValorAdministrador(){
+        
+        assertTrue(inicio.obtenerValorDeAdministrador("mario", "123"));
+        
+        
+    }
 }

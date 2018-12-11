@@ -4,12 +4,15 @@ import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+import modelo.InicioSesion;
 
-public class VentanaIngreso extends JFrame implements ActionListener {
+public final class VentanaIngreso extends JFrame implements ActionListener {
 
     private PanelUsuarioIngreso panelUsuario;
     private PanelBotonesIngreso panelBotones;
-
+    private InicioSesion inicio = new InicioSesion();;
+    
     public VentanaIngreso() {
         this.inicializarComponentes();
     }
@@ -32,10 +35,23 @@ public class VentanaIngreso extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == this.panelBotones.btnAceptar) {
-            this.setVisible(false);
-            VentanaPrincipal p = new VentanaPrincipal();
+            String usuarioIngresado =this.panelUsuario.ingUsuario.getText();
+            String contraseñaIngresada = this.panelUsuario.ingContrasena.getText();
+            if(this.inicio.verificarUsuario(usuarioIngresado, contraseñaIngresada)){
+                this.setVisible(false);
+               VentanaPrincipal p = new VentanaPrincipal(this.inicio.obtenerValorDeAdministrador(usuarioIngresado, contraseñaIngresada));
+             
+            }else{
+                JOptionPane.showMessageDialog(this,
+    "La contraseña, o nombre de usuario son incorrectos, intentelo denuevo.",
+    "Error de inicio",
+    JOptionPane.ERROR_MESSAGE);
+            }
+            
+            
         } else if (e.getSource() == this.panelBotones.btnCancelar) {
             System.exit(0);
         }
+        
     }
 }

@@ -29,7 +29,7 @@ public class PanelTablaVentPrincipal extends JPanel {
         this.tabla = new JTable();
         this.tabla.setModel(modelo);
         this.modelo.addColumn("Nombre");
-        this.modelo.addColumn("Código");
+        this.modelo.addColumn("CÃ³digo");
         this.modelo.addColumn("Cantidad");
         this.scroll = new JScrollPane(tabla);
         this.add(this.scroll);

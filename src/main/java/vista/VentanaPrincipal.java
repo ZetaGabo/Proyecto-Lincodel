@@ -20,13 +20,14 @@ public final class VentanaPrincipal extends JFrame implements ActionListener {
     private PanelDatosVentPrincipal panelDatos;
     private GridBagConstraints c;
     private GridBagLayout distribucion;
-
+    private final boolean esAdministrador;
     /**
     *
     * @author usuario
+     * @param esAdministrador
     */
-    public VentanaPrincipal() {
-
+    public VentanaPrincipal(boolean esAdministrador) {
+    this.esAdministrador = esAdministrador;
         this.inicializarComponentes();
 
     }
