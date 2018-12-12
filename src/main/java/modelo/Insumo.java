@@ -15,13 +15,13 @@ public class Insumo {
 
     private final String nombreInsumo;
     private final String codigo;
-    private final long cantidad;
+    private final int cantidad;
  
     private final TipoInsumo tipo;
     
     private final String presentacion;
     private final String unidadMedida;
-    private final Date Fecha;
+    private final String Fecha;
 
     @Override
     public String toString() {
@@ -52,11 +52,11 @@ public class Insumo {
         return unidadMedida;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return Fecha;
     }
 
-    public Insumo(String nombreInsumo, String codigo, long cantidad, TipoInsumo tipo, String presentacion, String unidadMedida, Date Fecha) {
+    public Insumo(String nombreInsumo, String codigo, int cantidad, TipoInsumo tipo, String presentacion, String unidadMedida, String Fecha) {
         this.nombreInsumo = nombreInsumo;
         this.codigo = codigo;
         this.cantidad = cantidad;

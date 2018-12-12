@@ -6,12 +6,16 @@
 package vista;
 
 import java.awt.GridLayout;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import modelo.Insumo;
 import modelo.TipoInsumo;
 
 public class PanelDatosVentPrincipal extends JPanel {
@@ -70,7 +74,7 @@ public class PanelDatosVentPrincipal extends JPanel {
         
         this.CbxIngTipo = new JComboBox();
         for (TipoInsumo ti : TipoInsumo.values()) {
-            this.CbxIngTipo.addItem(ti);
+            this.CbxIngTipo.addItem(ti.toString());
         }
         
         this.add(this.CbxIngTipo, distribucion);
@@ -103,5 +107,20 @@ public class PanelDatosVentPrincipal extends JPanel {
         this.scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_NEVER);
         //this.add(this.scroll,distribucion);
 
+    }
+
+    public Insumo getAllData() {
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
+        LocalDateTime now = LocalDateTime.now();
+         String fecha = dtf.format(now);
+        
+       Insumo i = new Insumo(this.ingNombre.getText(), 
+               this.ingCodigo.getText(), 
+               Integer.parseInt(this.ingCantidad.getText()), 
+               (TipoInsumo) this.CbxIngTipo.getSelectedItem(), 
+               this.ingPresentacion.getText(), 
+               this.ingUnidadMedida.getText(), 
+                fecha);
+      return i;
     }
 }

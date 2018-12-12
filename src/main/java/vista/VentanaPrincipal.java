@@ -58,22 +58,15 @@ public final class VentanaPrincipal extends JFrame implements ActionListener {
         this.panelDatos.btnAgregar.addActionListener(this);
         this.panelDatos.btnBorrar.addActionListener(this);
         
-        this.dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");  
    
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(this.panelDatos.btnAgregar==e.getSource()){
-        String dato1 = this.panelDatos.ingNombre.getText();
-        String dato2 = this.panelDatos.ingCodigo.getText();
-        String dato3 = this.panelDatos.ingCantidad.getText();
-        String dato4 = this.panelDatos.CbxIngTipo.getSelectedItem().toString();
-        String dato5 = this.panelDatos.ingPresentacion.getText();
-        String dato6 = this.panelDatos.ingUnidadMedida.getText();
-        LocalDateTime now = LocalDateTime.now();
-        String dato7 = this.dtf.format(now);
-        Object []row={dato1,dato2,dato3,dato4,dato5,dato6,dato7};
+            Insumo i = this.panelDatos.getAllData();
+        Object []row={i.getNombreInsumo(),i.getCodigo(),i.getCantidad(),
+            i.getTipo(),i.getPresentacion(),i.getUnidadMedida(),i.getFecha()};
         this.panelTabla.modelo.addRow(row);
             
         }
