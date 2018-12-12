@@ -117,7 +117,7 @@ public class PanelDatosVentPrincipal extends JPanel {
        Insumo i = new Insumo(this.ingNombre.getText(), 
                this.ingCodigo.getText(), 
                Integer.parseInt(this.ingCantidad.getText()), 
-               (TipoInsumo) this.CbxIngTipo.getSelectedItem(), 
+               (String) this.CbxIngTipo.getSelectedItem(), 
                this.ingPresentacion.getText(), 
                this.ingUnidadMedida.getText(), 
                 fecha);

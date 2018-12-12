@@ -17,7 +17,7 @@ public class Insumo {
     private final String codigo;
     private final int cantidad;
  
-    private final TipoInsumo tipo;
+    private final String tipo;
     
     private final String presentacion;
     private final String unidadMedida;
@@ -40,7 +40,7 @@ public class Insumo {
         return cantidad;
     }
 
-    public TipoInsumo getTipo() {
+    public String getTipo() {
         return tipo;
     }
 
@@ -56,7 +56,7 @@ public class Insumo {
         return Fecha;
     }
 
-    public Insumo(String nombreInsumo, String codigo, int cantidad, TipoInsumo tipo, String presentacion, String unidadMedida, String Fecha) {
+    public Insumo(String nombreInsumo, String codigo, int cantidad, String tipo, String presentacion, String unidadMedida, String Fecha) {
         this.nombreInsumo = nombreInsumo;
         this.codigo = codigo;
         this.cantidad = cantidad;
