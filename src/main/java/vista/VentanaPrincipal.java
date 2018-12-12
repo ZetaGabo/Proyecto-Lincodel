@@ -10,8 +10,6 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.time.format.DateTimeFormatter;  
 import java.time.LocalDateTime;    
 
@@ -41,7 +39,7 @@ public final class VentanaPrincipal extends JFrame implements ActionListener {
     public void inicializarComponentes() {
         this.setTitle("Ventana de Datos");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //this.setLocationRelativeTo(null);
+        this.setLocationRelativeTo(null);
         this.setResizable(false);
         this.panelMenu = new PanelMenuVentPrincipal();
         this.add(panelMenu, BorderLayout.NORTH);
@@ -50,7 +48,7 @@ public final class VentanaPrincipal extends JFrame implements ActionListener {
         this.panelTabla = new PanelTablaVentPrincipal();
         this.add(panelTabla, BorderLayout.CENTER);
         this.setVisible(true);
-        //pack();
+        pack();
         
         //actionListener test
         this.panelDatos.btnAgregar.addActionListener(this);
@@ -75,15 +73,10 @@ public final class VentanaPrincipal extends JFrame implements ActionListener {
         this.panelTabla.modelo.addRow(row);
         }
         if(this.panelDatos.btnBorrar==e.getSource()){
-            this.panelTabla.tabla.addMouseListener(new MouseAdapter() {
-                @Override
-    public void mouseReleased(MouseEvent e) {
-        this
-    }
-            
-            });
+            int seleccion=this.panelTabla.tabla.getSelectedRow();
+            this.panelTabla.modelo.removeRow(seleccion);
         }
-    }
+   }
 
     private void obtenerDatos() {
         
