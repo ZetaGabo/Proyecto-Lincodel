@@ -26,7 +26,7 @@ public class GestorDeArchivos_1Test {
         List<Object> ob = new ArrayList<>();
         ob.add(u);
         String NOMBRE = "objetos.json";
-        g.almacenarUsuario(ob, NOMBRE);
+        g.almacenarObjeto(ob, NOMBRE);
     }
 
     

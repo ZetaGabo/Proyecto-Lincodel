@@ -14,61 +14,57 @@ import java.util.Date;
 public class Insumo {
 
     private final String nombreInsumo;
-    private final Date Fecha;
-    private final long stock;
-    private final String descripcion;
+    private final String codigo;
+    private final long cantidad;
+ 
     private final TipoInsumo tipo;
+    
+    private final String presentacion;
     private final String unidadMedida;
-    private final long precio;
+    private final Date Fecha;
 
-    public Insumo(String nombreInsumo, Date Fecha, long stock, String descripcion, 
-           TipoInsumo tipo, String unidadMedida, long precio) {
-        
-        this.nombreInsumo = nombreInsumo;
-        this.Fecha = Fecha;
-        this.stock = stock;
-        this.descripcion = descripcion;
-        this.tipo = tipo;
-        this.unidadMedida = unidadMedida;
-        this.precio = precio;
+    @Override
+    public String toString() {
+        return "Insumo{" + "nombreInsumo=" + nombreInsumo + ", codigo=" + codigo + ", cantidad=" + cantidad + ", tipo=" + tipo + ", presentacion=" + presentacion + ", unidadMedida=" + unidadMedida + ", Fecha=" + Fecha + '}';
     }
 
     public String getNombreInsumo() {
         return nombreInsumo;
     }
 
-    public Date getFecha() {
-        return Fecha;
+    public String getCodigo() {
+        return codigo;
     }
 
-    public long getStock() {
-        return stock;
-    }
-
-    public String getDescripcion() {
-        return descripcion;
+    public long getCantidad() {
+        return cantidad;
     }
 
     public TipoInsumo getTipo() {
         return tipo;
     }
 
+    public String getPresentacion() {
+        return presentacion;
+    }
+
     public String getUnidadMedida() {
         return unidadMedida;
     }
 
-    public long getPrecio() {
-        return precio;
+    public Date getFecha() {
+        return Fecha;
     }
 
-    @Override
-    public String toString() {
-        return "Insumo{" + "nombreInsumo=" + nombreInsumo + ", Fecha=" + Fecha 
-                + ", stock=" + stock + ", descripcion=" + descripcion + ", tipo=" 
-                + tipo + ", unidadMedida=" + unidadMedida + ", precio=" + precio + '}';
+    public Insumo(String nombreInsumo, String codigo, long cantidad, TipoInsumo tipo, String presentacion, String unidadMedida, Date Fecha) {
+        this.nombreInsumo = nombreInsumo;
+        this.codigo = codigo;
+        this.cantidad = cantidad;
+        this.tipo = tipo;
+        this.presentacion = presentacion;
+        this.unidadMedida = unidadMedida;
+        this.Fecha = Fecha;
     }
-    
-    
-    
-    
+
+
 }

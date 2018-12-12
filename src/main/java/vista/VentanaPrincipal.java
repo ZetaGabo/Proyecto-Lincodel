@@ -14,6 +14,8 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;    
 
 import javax.swing.JFrame;
+import modelo.GestorDeArchivos;
+import modelo.Insumo;
 
 public final class VentanaPrincipal extends JFrame implements ActionListener {
 
@@ -24,6 +26,8 @@ public final class VentanaPrincipal extends JFrame implements ActionListener {
     private GridBagLayout distribucion;
     private final boolean esAdministrador;
     private DateTimeFormatter dtf ;
+    private final GestorDeArchivos gestor = new GestorDeArchivos();
+    private final String NOMBRE = "insumos.json";
     /**
     *
     * @author usuario
@@ -71,6 +75,7 @@ public final class VentanaPrincipal extends JFrame implements ActionListener {
         String dato7 = this.dtf.format(now);
         Object []row={dato1,dato2,dato3,dato4,dato5,dato6,dato7};
         this.panelTabla.modelo.addRow(row);
+            
         }
         if(this.panelDatos.btnBorrar==e.getSource()){
             int seleccion=this.panelTabla.tabla.getSelectedRow();
@@ -79,6 +84,11 @@ public final class VentanaPrincipal extends JFrame implements ActionListener {
    }
 
     private void obtenerDatos() {
+            Object ob =this.gestor.recuperarJsonGenerico(this.NOMBRE);
+            
+            
+    }
+    private void guardarDatos(){
         
     }
 

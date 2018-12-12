@@ -30,7 +30,7 @@ public class GestorDeArchivos {
     public GestorDeArchivos() {
 
     }
-    public boolean almacenarUsuario(Object objeto, String NOMBRE/*objetos.json*/){
+    public boolean almacenarObjeto(Object objeto, String NOMBRE/*objetos.json*/){
         boolean valorReturn=false;
         
         
@@ -52,6 +52,7 @@ public class GestorDeArchivos {
             }
         return valorReturn;
     }
+    
     public ArrayList<Object> recuperarJsonGenerico(String NOMBRE/*objetos.json*/){
         Gson gson = new Gson();
 
@@ -60,12 +61,15 @@ public class GestorDeArchivos {
         return gson.fromJson(textDecodificado, new TypeToken<List<Object>>() {}.getType());
     }
     
+    
     public ArrayList<Usuario> recuperarJsonUsuario(String NOMBRE/*objetos.json*/){
          Gson gson = new Gson();
 
         String textDecodificado=DecoJson(NOMBRE);
         return gson.fromJson(textDecodificado, new TypeToken<List<Usuario>>() {}.getType());
     }
+    
+    
     private String DecoJson(String NOMBRE){
                 BufferedReader br = null;
               try {

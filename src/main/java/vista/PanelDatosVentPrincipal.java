@@ -5,7 +5,6 @@
  */
 package vista;
 
-import java.awt.Dimension;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -25,6 +24,7 @@ public class PanelDatosVentPrincipal extends JPanel {
     public JTextField ingNombre;
     private JLabel lblCodigo;
     public JTextField ingCodigo;
+    
     private JLabel lblCantidad;
     public JTextField ingCantidad;
 
