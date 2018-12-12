@@ -12,10 +12,20 @@ import java.awt.event.ActionListener;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 public class PanelMenuVentPrincipal extends JPanel implements ActionListener{
-	public PanelMenuVentPrincipal() {
+	
+    
+    private JMenuItem mntmIngresarInsumo;
+    private JMenuItem mntmCopiar;
+    private JMenuItem mntmPegar ;
+    private JMenuItem mntmBorrar ;
+    private JMenuItem mntmVerRegistroGeneral;
+    private JMenuItem mntmVerRegistroDe;
+    private JMenuItem mntmAcerca;
+    public PanelMenuVentPrincipal() {
 		this.inicializarComponentes();
 	}
 
@@ -25,22 +35,22 @@ public class PanelMenuVentPrincipal extends JPanel implements ActionListener{
 		JMenuBar menu = new JMenuBar();
 		this.add(menu, BorderLayout.NORTH);
 		
-		JMenu mnArchivo = new JMenu("Archivo");
+		JMenu mnArchivo= new JMenu("Archivo");
 		menu.add(mnArchivo);
 		
-		JMenuItem mntmIngresarInsumo = new JMenuItem("Ingresar Insumo");
+		mntmIngresarInsumo = new JMenuItem("Ingresar Insumo");
 		mnArchivo.add(mntmIngresarInsumo);
 		
 		JMenu mnEditar = new JMenu("Editar");
 		menu.add(mnEditar);
 		
-		JMenuItem mntmCopiar = new JMenuItem("Copiar");
+		mntmCopiar = new JMenuItem("Copiar");
 		mnEditar.add(mntmCopiar);
 		
-		JMenuItem mntmPegar = new JMenuItem("Pegar");
+		mntmPegar = new JMenuItem("Pegar");
 		mnEditar.add(mntmPegar);
 		
-		JMenuItem mntmBorrar = new JMenuItem("Borrar");
+		mntmBorrar = new JMenuItem("Borrar");
 		mnEditar.add(mntmBorrar);
 		
 		JMenu mnOpciones = new JMenu("Opciones");
@@ -50,22 +60,32 @@ public class PanelMenuVentPrincipal extends JPanel implements ActionListener{
 		menu.add(mnRegistro);
                 
                 
-		JMenuItem mntmVerRegistroGeneral = new JMenuItem("Ver Registro General");
+		mntmVerRegistroGeneral = new JMenuItem("Ver Registro General");
 		mnRegistro.add(mntmVerRegistroGeneral);
 		mntmVerRegistroGeneral.addActionListener((ActionListener) this);
                 
-		JMenuItem mntmVerRegistroDe = new JMenuItem("Ver Registro de este Ordenador");
+		mntmVerRegistroDe = new JMenuItem("Ver Registro de este Ordenador");
 		mnRegistro.add(mntmVerRegistroDe);
 		
 		JMenu mnAcercaDe = new JMenu("Acerca de");
 		menu.add(mnAcercaDe);
 		
-		JMenuItem mntmAcerca = new JMenuItem("Acerca de aplicación");
+		mntmAcerca = new JMenuItem("Acerca de aplicación");
+                this.mntmAcerca.addActionListener((ActionListener)this);
 		mnAcercaDe.add(mntmAcerca);
         }
                    
         public void actionPerformed(ActionEvent e) {
-            VentanaRegistro v = new VentanaRegistro();
+            if(this.mntmVerRegistroGeneral==e.getSource()){
+                VentanaRegistro v = new VentanaRegistro();
+            }else if(this.mntmAcerca==e.getSource()){
+                
+                JOptionPane.showMessageDialog(this, 
+                        "Lincodel 2018\nProyecto con propósito de aprendizaje\nUfro - "
+                                + "facultad de Ingenieria informatica","acerca"
+                        ,JOptionPane.INFORMATION_MESSAGE);
+            }
+            
         }
                 
 	}

@@ -15,9 +15,9 @@ import javax.swing.table.DefaultTableModel;
 
 public class PanelTablaVentPrincipal extends JPanel {
 
-    private JTable tabla;
-    private DefaultTableModel modelo;
-    private JScrollPane scroll;
+    public JTable tabla;
+    public DefaultTableModel modelo;
+    private  JScrollPane scroll;
 
     public PanelTablaVentPrincipal() {
         this.inicializarComponentes();
@@ -26,12 +26,26 @@ public class PanelTablaVentPrincipal extends JPanel {
     private void inicializarComponentes() {
 
         this.modelo = new DefaultTableModel();
-        this.tabla = new JTable();
+        
+        this.tabla = new JTable(){
+            @Override
+    public boolean isCellEditable(int row, int column) {
+        return false;
+    }
+        };
         this.tabla.setModel(modelo);
         this.modelo.addColumn("Nombre");
         this.modelo.addColumn("Código");
         this.modelo.addColumn("Cantidad");
-        this.scroll = new JScrollPane(tabla);
+        this.modelo.addColumn("tipo de insumo");
+        this.modelo.addColumn("presentación");
+        this.modelo.addColumn("u. de medida");
+        this.modelo.addColumn("fecha");
+        
+        this.scroll = new JScrollPane(tabla,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        
         this.add(this.scroll);
+        
+        
     }
 }
