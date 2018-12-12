@@ -6,9 +6,10 @@
 package vista;
 
 import java.awt.GridLayout;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -28,7 +29,7 @@ public class PanelDatosVentPrincipal extends JPanel {
     public JTextField ingNombre;
     private JLabel lblCodigo;
     public JTextField ingCodigo;
-    
+
     private JLabel lblCantidad;
     public JTextField ingCantidad;
 
@@ -40,7 +41,7 @@ public class PanelDatosVentPrincipal extends JPanel {
 
     private JLabel lblPresentacion;
     public JTextField ingPresentacion;
-    
+
     public JButton btnAgregar;
     public JButton btnBorrar;
 
@@ -66,17 +67,29 @@ public class PanelDatosVentPrincipal extends JPanel {
         this.ingCantidad = new JTextField();
         this.ingCantidad.setColumns(10);
         this.add(this.ingCantidad, distribucion);
+        this.ingCantidad.addKeyListener(new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                char c = e.getKeyChar();
+                if (!(Character.isDigit(c)
+                        || (c == KeyEvent.VK_BACK_SPACE)
+                        || (c == KeyEvent.VK_DELETE))) {
+                    getToolkit().beep();
+                    e.consume();
+                }
+            }
+        });
 
         //combo box: tipo de insumo + texto
         this.lblTipo = new JLabel();
         this.lblTipo.setText("Ingrese tipo de insumo");
         this.add(this.lblTipo, distribucion);
-        
+
         this.CbxIngTipo = new JComboBox();
         for (TipoInsumo ti : TipoInsumo.values()) {
             this.CbxIngTipo.addItem(ti.toString());
         }
-        
+
         this.add(this.CbxIngTipo, distribucion);
 
         //unidad de medida
@@ -90,11 +103,11 @@ public class PanelDatosVentPrincipal extends JPanel {
         //ingresar presentacion
         this.lblPresentacion = new JLabel();
         this.lblPresentacion.setText("Presentación");
-        this.add(this.lblPresentacion,distribucion);
+        this.add(this.lblPresentacion, distribucion);
         this.ingPresentacion = new JTextField();
         this.ingPresentacion.setColumns(10);
-        this.add(this.ingPresentacion,distribucion);
-        
+        this.add(this.ingPresentacion, distribucion);
+
         //botones
         this.btnAgregar = new JButton("Agregar");
         this.add(this.btnAgregar);
@@ -112,15 +125,15 @@ public class PanelDatosVentPrincipal extends JPanel {
     public Insumo getAllData() {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
-         String fecha = dtf.format(now);
-        
-       Insumo i = new Insumo(this.ingNombre.getText(), 
-               this.ingCodigo.getText(), 
-               Integer.parseInt(this.ingCantidad.getText()), 
-               (String) this.CbxIngTipo.getSelectedItem(), 
-               this.ingPresentacion.getText(), 
-               this.ingUnidadMedida.getText(), 
+        String fecha = dtf.format(now);
+
+        Insumo i = new Insumo(this.ingNombre.getText(),
+                this.ingCodigo.getText(),
+                Integer.parseInt(this.ingCantidad.getText()),
+                (String) this.CbxIngTipo.getSelectedItem(),
+                this.ingPresentacion.getText(),
+                this.ingUnidadMedida.getText(),
                 fecha);
-      return i;
+        return i;
     }
 }
