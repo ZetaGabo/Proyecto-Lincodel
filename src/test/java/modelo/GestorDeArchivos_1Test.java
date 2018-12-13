@@ -26,9 +26,17 @@ public class GestorDeArchivos_1Test {
         List<Object> ob = new ArrayList<>();
         ob.add(u);
         String NOMBRE = "objetos.json";
-        g.almacenarObjeto(ob, NOMBRE);
+        //g.almacenarObjeto(ob, NOMBRE);
     }
-
+    @Test
+    public void testBorrarObjeto(){
+        GestorDeArchivos g = new GestorDeArchivos();
+        Insumo i;
+        i = new Insumo("a","a",1,"AGUJAS","a","a","a");
+        Object ob = i;
+        assertTrue(g.removerObjetoJson(ob, "insumos.json"));
+                
+    }
     
     
 }

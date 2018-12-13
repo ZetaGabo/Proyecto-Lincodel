@@ -18,13 +18,16 @@ import javax.swing.JPanel;
 public class PanelMenuVentPrincipal extends JPanel implements ActionListener{
 	
     
-    private JMenuItem mntmIngresarInsumo;
-    private JMenuItem mntmCopiar;
-    private JMenuItem mntmPegar ;
-    private JMenuItem mntmBorrar ;
+    public  JMenuItem mntmCerrarSesion;
+    
     private JMenuItem mntmVerRegistroGeneral;
     private JMenuItem mntmVerRegistroDe;
-    private JMenuItem mntmAcerca;
+    public  JMenuItem mntmAcerca;
+    public  JMenuItem mntmLimpiar;
+    public  JMenuItem mntmCopiar;
+    public  JMenuItem mntmOrdenar;
+    public  JMenuItem mntmSalir;
+    
     public PanelMenuVentPrincipal() {
 		this.inicializarComponentes();
 	}
@@ -38,41 +41,46 @@ public class PanelMenuVentPrincipal extends JPanel implements ActionListener{
 		JMenu mnArchivo= new JMenu("Archivo");
 		menu.add(mnArchivo);
 		
-		mntmIngresarInsumo = new JMenuItem("Ingresar Insumo");
-		mnArchivo.add(mntmIngresarInsumo);
+		this.mntmCerrarSesion = new JMenuItem("Cerrar Sesión");
+		mnArchivo.add(this.mntmCerrarSesion);
 		
+                this.mntmSalir = new JMenuItem("Cerrar Sesión");
+		mnArchivo.add(this.mntmSalir);
+                
 		JMenu mnEditar = new JMenu("Editar");
 		menu.add(mnEditar);
 		
-		mntmCopiar = new JMenuItem("Copiar");
-		mnEditar.add(mntmCopiar);
+		this.mntmLimpiar = new JMenuItem("Copiar");
+		mnEditar.add(this.mntmLimpiar);
 		
-		mntmPegar = new JMenuItem("Pegar");
-		mnEditar.add(mntmPegar);
+		this.mntmCopiar = new JMenuItem("Pegar");
+		mnEditar.add(this.mntmCopiar);
 		
-		mntmBorrar = new JMenuItem("Borrar");
-		mnEditar.add(mntmBorrar);
+		
 		
 		JMenu mnOpciones = new JMenu("Opciones");
 		menu.add(mnOpciones);
-		
+                
+                this.mntmOrdenar = new JMenuItem("Ordernar por fecha");
+		mnOpciones.add(this.mntmOrdenar);
+                
 		JMenu mnRegistro = new JMenu("Registro");
 		menu.add(mnRegistro);
                 
                 
-		mntmVerRegistroGeneral = new JMenuItem("Ver Registro General");
-		mnRegistro.add(mntmVerRegistroGeneral);
-		mntmVerRegistroGeneral.addActionListener((ActionListener) this);
+		this.mntmVerRegistroGeneral = new JMenuItem("Ver Registro General");
+		mnRegistro.add(this.mntmVerRegistroGeneral);
+		this.mntmVerRegistroGeneral.addActionListener((ActionListener) this);
                 
-		mntmVerRegistroDe = new JMenuItem("Ver Registro de este Ordenador");
-		mnRegistro.add(mntmVerRegistroDe);
+		this.mntmVerRegistroDe = new JMenuItem("Ver Registro de este Ordenador");
+		mnRegistro.add(this.mntmVerRegistroDe);
 		
 		JMenu mnAcercaDe = new JMenu("Acerca de");
 		menu.add(mnAcercaDe);
 		
-		mntmAcerca = new JMenuItem("Acerca de aplicación");
+		this.mntmAcerca = new JMenuItem("Acerca de aplicación");
                 this.mntmAcerca.addActionListener((ActionListener)this);
-		mnAcercaDe.add(mntmAcerca);
+		mnAcercaDe.add(this.mntmAcerca);
         }
                    
         public void actionPerformed(ActionEvent e) {

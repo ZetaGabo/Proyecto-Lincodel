@@ -22,6 +22,15 @@ public class PanelInformacionVentRegistro extends JPanel {
     private JButton btnBuscar;
     private JButton btnCancelar;
     private PanelMostrarInfoVentRegistro panelMostrarInfo;
+    private   JLabel lblNombre ;
+    private   JLabel lblCodigo ;
+    private  JLabel lblCantidad ;
+    private  JLabel lblTipo;
+    private  JLabel lblPresentacion ;
+    private JLabel lblUnidadMedida;
+    private JLabel lblFecha;
+    
+    
     public PanelInformacionVentRegistro() {
         inicializarComponentes();
     }
@@ -44,26 +53,32 @@ public class PanelInformacionVentRegistro extends JPanel {
         this.btnBuscar = new JButton("Buscar");
         panelBotones.add(this.btnBuscar);
 
-        JButton btnCancelar = new JButton("Limpiar");
-        panelBotones.add(btnCancelar);
+        this.btnCancelar = new JButton("Limpiar");
+        panelBotones.add(this.btnCancelar);
 
         JPanel panelMostrarListaInfo = new JPanel();
         this.add(panelMostrarListaInfo, BorderLayout.WEST);
         panelMostrarListaInfo.setLayout(new BoxLayout(panelMostrarListaInfo, BoxLayout.Y_AXIS));
 
-        JLabel lblFecha_1 = new JLabel("Fecha:");
-        panelMostrarListaInfo.add(lblFecha_1);
+        this.lblNombre = new JLabel("Nombre:");
+        panelMostrarListaInfo.add(this.lblNombre);
 
-        JLabel lblCodigo_1 = new JLabel("Codigo:");
-        panelMostrarListaInfo.add(lblCodigo_1);
+        this.lblCodigo = new JLabel("Codigo:");
+        panelMostrarListaInfo.add(this.lblCodigo);
 
-        JLabel lblTipo = new JLabel("Tipo:");
-        panelMostrarListaInfo.add(lblTipo);
+        this.lblCantidad = new JLabel("Cantidad:");
+        panelMostrarListaInfo.add(this.lblCantidad);
 
-        JLabel lblCantidadDeStock = new JLabel("Cantidad de Stock:");
-        panelMostrarListaInfo.add(lblCantidadDeStock);
+        this.lblTipo = new JLabel("Tipo:");
+        panelMostrarListaInfo.add(this.lblTipo);
 
-        JLabel lblClase = new JLabel("Clase:");
-        panelMostrarListaInfo.add(lblClase);
+        this.lblPresentacion = new JLabel("Presentación:");
+        panelMostrarListaInfo.add(this.lblPresentacion);
+        
+        this.lblFecha = new JLabel("Unidad de medida:");
+        panelMostrarListaInfo.add(this.lblFecha);
+        
+        this.lblFecha = new JLabel("Fecha:");
+        panelMostrarListaInfo.add(this.lblFecha);
     }
 }

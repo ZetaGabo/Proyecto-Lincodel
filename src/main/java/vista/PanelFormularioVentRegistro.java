@@ -33,6 +33,13 @@ public class PanelFormularioVentRegistro extends JPanel {
     public void inicializarComponentes(){
         this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
+        this. lblNombTipo = new JLabel("NOMBRE");
+        this.add(this.lblNombTipo);
+        
+        this.ingNombTipo = new JTextField();
+        this.add(this.ingNombTipo);
+        this.ingNombTipo.setColumns(10);
+    
         this.lblCodigo = new JLabel("CODIGO");
         this.add(this.lblCodigo);
 
@@ -47,17 +54,14 @@ public class PanelFormularioVentRegistro extends JPanel {
         this.add(ingFecha);
         this.ingFecha.setColumns(10);
 
-        this. lblNombTipo = new JLabel("NOMBRE O TIPO");
-        this.add(this.lblNombTipo);
-
-        this.ingNombTipo = new JTextField();
-        this.add(this.ingNombTipo);
-        this.ingNombTipo.setColumns(10);
-
+        
         this.lblAccion = new JLabel("ACCIÓN TOMADA");
         this.add(this.lblAccion);
 
         this. combBoxAccion = new JComboBox();
+        this.combBoxAccion.addItem("Ingresado");
+        this.combBoxAccion.addItem("Borrado");
+        this.combBoxAccion.addItem("Modificado");
         this.add(this.combBoxAccion);
         
     }

@@ -12,7 +12,9 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -25,60 +27,98 @@ public class GestorDeArchivos {
     private final Codificador codificador = new Codificador();
     ArrayList<Usuario> usuarios = new ArrayList<>();
     private final String RUTA = "datosAlmacenados/";
-    
 
     public GestorDeArchivos() {
 
     }
-    public boolean almacenarObjeto(Object objeto, String NOMBRE/*objetos.json*/){
-        boolean valorReturn=false;
-        
-        
-        
-        Type listType =new TypeToken<List<Object>>() {}.getType();
-        Gson gson = new Gson();
-//        ArrayList<Object> lista=this.recuperarJsonGenerico(NOMBRE);
-//        lista.add(objeto);
-        
-        String json = gson.toJson(objeto,listType);
-        
-        String jsonCodificado = codificador.codificarString(json);
-                
-        try (FileWriter file = new FileWriter(RUTA+NOMBRE)){
-                file.write(jsonCodificado);
-                valorReturn = true;
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+
+    public boolean almacenarObjeto(Object objeto, String NOMBRE/*objetos.json*/) {
+        ArrayList<Object> lista;
+        boolean valorReturn = false;
+        if (this.recuperarJsonGenerico(NOMBRE) != null) {
+            lista = this.recuperarJsonGenerico(NOMBRE);
+
+        } else {
+            lista = new ArrayList<>();
+
+        }
+
+        lista.add(objeto);
+        valorReturn = escritorJson(lista, NOMBRE);
         return valorReturn;
     }
-    
-    public ArrayList<Object> recuperarJsonGenerico(String NOMBRE/*objetos.json*/){
+
+    private boolean escritorJson(ArrayList<Object> lista, String NOMBRE) {
+        boolean valorReturn = false;
+        Type listType = new TypeToken<List<Object>>() {
+        }.getType();
+        Gson gson = new Gson();
+        String json = gson.toJson(lista, listType);
+
+        String jsonCodificado = codificador.codificarString(json);
+
+        try (FileWriter file = new FileWriter(RUTA + NOMBRE)) {
+            file.write(jsonCodificado);
+            valorReturn = true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return valorReturn;
+    }
+
+    public ArrayList<Object> recuperarJsonGenerico(String NOMBRE/*objetos.json*/) {
         Gson gson = new Gson();
 
-        String textDecodificado=DecoJson(NOMBRE);
-        
-        return gson.fromJson(textDecodificado, new TypeToken<List<Object>>() {}.getType());
-    }
-    
-    
-    public ArrayList<Usuario> recuperarJsonUsuario(String NOMBRE/*objetos.json*/){
-         Gson gson = new Gson();
+        String textDecodificado = DecoJson(NOMBRE);
 
-        String textDecodificado=DecoJson(NOMBRE);
-        return gson.fromJson(textDecodificado, new TypeToken<List<Usuario>>() {}.getType());
+        return gson.fromJson(textDecodificado, new TypeToken<List<Object>>() {
+        }.getType());
     }
-    
-    
-    private String DecoJson(String NOMBRE){
-                BufferedReader br = null;
-              try {
-                br =new BufferedReader(new FileReader(RUTA+NOMBRE));
-            } catch (Exception e) {
-                  e.printStackTrace();
+
+    public ArrayList<Usuario> recuperarJsonUsuario(String NOMBRE/*objetos.json*/) {
+        Gson gson = new Gson();
+
+        String textDecodificado = DecoJson(NOMBRE);
+        return gson.fromJson(textDecodificado, new TypeToken<List<Usuario>>() {
+        }.getType());
+    }
+
+    public ArrayList<Insumo> recuperarJsonInsumos(String NOMBRE/*insumos.json*/) {
+        Gson gson = new Gson();
+
+        String textDecodificado = DecoJson(NOMBRE);
+        return gson.fromJson(textDecodificado, new TypeToken<List<Insumo>>() {
+        }.getType());
+    }
+
+    private String DecoJson(String NOMBRE) {
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader(RUTA + NOMBRE));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return codificador.decodificar(br.lines().collect(Collectors.joining()));
+
+    }
+
+    public boolean removerObjetoJson(Insumo i, String NOMBRE) {
+        if(recuperarJsonGenerico(NOMBRE)!=null){
+        ArrayList<Insumo> insumos = recuperarJsonInsumos(NOMBRE);
+            
+         insumos.removeIf(x->x.equals(i));
+        
+            
+        ArrayList<Object> obj = new ArrayList<>();
+            for (Insumo insumo: insumos) {
+                obj.add((Object)insumo);
             }
-              
-             return codificador.decodificar(br.lines().collect(Collectors.joining()));
-      
+        return escritorJson(obj, NOMBRE);
+        }
+        else{ 
+            return false;
+                }
     }
+    
 }

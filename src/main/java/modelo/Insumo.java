@@ -5,8 +5,6 @@
  */
 package modelo;
 
-import java.util.Date;
-
 /**
  *
  * @author usuario
@@ -23,6 +21,8 @@ public class Insumo {
     private final String unidadMedida;
     private final String Fecha;
 
+
+
     @Override
     public String toString() {
         return "Insumo{" + "nombreInsumo=" + nombreInsumo + ", codigo=" + codigo + ", cantidad=" + cantidad + ", tipo=" + tipo + ", presentacion=" + presentacion + ", unidadMedida=" + unidadMedida + ", Fecha=" + Fecha + '}';
@@ -36,7 +36,7 @@ public class Insumo {
         return codigo;
     }
 
-    public long getCantidad() {
+    public int getCantidad() {
         return cantidad;
     }
 

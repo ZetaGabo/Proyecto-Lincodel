@@ -13,11 +13,13 @@ import javax.swing.JLabel;
  * @author usuario
  */
 public class PanelMostrarInfoVentRegistro extends JLabel{
-    private JLabel mostrarFecha;
+    private JLabel mostrarNombre;
     private JLabel mostrarTipo;
     private JLabel mostrarCodigo;
     private JLabel mostrarCantidad;
-    private JLabel mostrarOtros;
+    private JLabel mostrarPresentacion;
+    private JLabel mostrarUnidadMedida;
+    private JLabel mostrarFecha;
     public PanelMostrarInfoVentRegistro() {
         inicializarComponentes();
     }
@@ -28,19 +30,27 @@ public class PanelMostrarInfoVentRegistro extends JLabel{
     private void inicializarComponentes()  {
        this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-        this.mostrarFecha = new JLabel("n/a");
-        this.add(this.mostrarFecha);
+        this.mostrarNombre = new JLabel("n/a");
+        this.add(this.mostrarNombre);
 
         this. mostrarCodigo = new JLabel("n/a");
         this.add(this.mostrarCodigo);
 
-        this. mostrarTipo = new JLabel("n/a");
-        this.add(this.mostrarTipo);
+       
 
         this. mostrarCantidad = new JLabel("n/a");
         this.add(this.mostrarCantidad);
+        
+         this. mostrarTipo = new JLabel("n/a");
+        this.add(this.mostrarTipo);
 
-        this.mostrarOtros = new JLabel("n/a");
-        this.add(this.mostrarOtros);
+        this.mostrarPresentacion = new JLabel("n/a");
+        this.add(this.mostrarPresentacion);
+        
+        this.mostrarUnidadMedida = new JLabel("n/a");
+        this.add(this.mostrarUnidadMedida);
+        
+         this.mostrarFecha = new JLabel("n/a");
+        this.add(this.mostrarFecha);
     }
 }

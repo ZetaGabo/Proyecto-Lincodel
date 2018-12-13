@@ -44,13 +44,14 @@ public class PanelCentralVentRegistro extends JPanel {
         PanelTabla.setLayout(new BorderLayout(0, 0));
 
         this.modelo = new DefaultTableModel();
-                this.modelo.addColumn("Codigo");
+                this.modelo.addColumn("Nombre");
+                this.modelo.addColumn("Código");
+                this.modelo.addColumn("Cantidad");
                 this.modelo.addColumn("Tipo");
-                this.modelo.addColumn("Presentación");
-                this.modelo.addColumn("Concentración");
-                this.modelo.addColumn("Clase");
-                this.modelo.addColumn("Stock");
-                this.modelo.addColumn("Acción Tomada");
+                this.modelo.addColumn("Presentacion");
+                this.modelo.addColumn("Unidad de medida");
+                this.modelo.addColumn("Fecha");
+                this.modelo.addColumn("acción tomada");
 		
 		this.tablaDatos = new JTable(modelo);
                 

@@ -123,10 +123,18 @@ public class PanelDatosVentPrincipal extends JPanel {
     }
 
     public Insumo getAllData() {
+        if(this.ingNombre.getText()!=null&&
+                this.ingCodigo.getText()!=null&&
+                this.ingCantidad.getText()!=null&&
+                 this.CbxIngTipo.getSelectedItem()!=null&&
+                this.ingPresentacion.getText()!=null&&
+                this.ingUnidadMedida.getText()!=null
+                ){
+        
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         String fecha = dtf.format(now);
-
+        
         Insumo i = new Insumo(this.ingNombre.getText(),
                 this.ingCodigo.getText(),
                 Integer.parseInt(this.ingCantidad.getText()),
@@ -134,6 +142,10 @@ public class PanelDatosVentPrincipal extends JPanel {
                 this.ingPresentacion.getText(),
                 this.ingUnidadMedida.getText(),
                 fecha);
+        
+                
         return i;
+        }
+        return null;
     }
 }
