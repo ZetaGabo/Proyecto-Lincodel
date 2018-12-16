@@ -5,8 +5,6 @@
  */
 package modelo;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
@@ -22,21 +20,23 @@ public class GestorDeArchivos_1Test {
     @Test
     public void testAlmacenarUsuario() {
         GestorDeArchivos g = new GestorDeArchivos();
-        Usuario u = new Usuario("mario","123",true);
-        List<Object> ob = new ArrayList<>();
-        ob.add(u);
+        Usuario u = new Usuario("nico","123",false);
+        
+        Object ob = u;
         String NOMBRE = "objetos.json";
-        //g.almacenarObjeto(ob, NOMBRE);
+       // g.almacenarObjeto(ob, NOMBRE);
     }
     @Test
     public void testBorrarObjeto(){
-        GestorDeArchivos g = new GestorDeArchivos();
-        Insumo i;
-        i = new Insumo("a","a",1,"AGUJAS","a","a","a");
-        Object ob = i;
-        assertTrue(g.removerObjetoJson(ob, "insumos.json"));
+        
                 
     }
-    
+    @Test
+    public void testLimpiarHistorial(){
+        GestorDeArchivos g = new GestorDeArchivos();
+        boolean valor=g.borrarHistorial("historial.json");
+        assertTrue(valor);
+        
+    }
     
 }

@@ -14,9 +14,9 @@ import vista.*;
 public class App {
 
     public static void main(String[] args) {
-       // VentanaIngreso v1 = new VentanaIngreso();
-     VentanaPrincipal p = new VentanaPrincipal(true);           
-     // VentanaRegistro v2 = new VentanaRegistro();
+       VentanaIngreso v1 = new VentanaIngreso();
+     //VentanaPrincipal p = new VentanaPrincipal(true);           
+     //VentanaRegistro v2 = new VentanaRegistro();
 
     }
 }

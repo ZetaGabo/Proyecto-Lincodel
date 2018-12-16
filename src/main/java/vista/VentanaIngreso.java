@@ -12,6 +12,7 @@ public final class VentanaIngreso extends JFrame implements ActionListener {
     private PanelUsuarioIngreso panelUsuario;
     private PanelBotonesIngreso panelBotones;
     private InicioSesion inicio = new InicioSesion();;
+    private VentanaPrincipal ventana;
     
     public VentanaIngreso() {
         this.inicializarComponentes();
@@ -37,9 +38,10 @@ public final class VentanaIngreso extends JFrame implements ActionListener {
         if (e.getSource() == this.panelBotones.btnAceptar) {
             String usuarioIngresado =this.panelUsuario.ingUsuario.getText();
             String contraseñaIngresada = this.panelUsuario.ingContrasena.getText();
+            
             if(this.inicio.verificarUsuario(usuarioIngresado, contraseñaIngresada)){
                 this.setVisible(false);
-               VentanaPrincipal p = new VentanaPrincipal(this.inicio.obtenerValorDeAdministrador(usuarioIngresado, contraseñaIngresada));
+               this.ventana = new VentanaPrincipal(this.inicio.obtenerValorDeAdministrador(usuarioIngresado, contraseñaIngresada));
              
             }else{
                 JOptionPane.showMessageDialog(this,
@@ -49,9 +51,11 @@ public final class VentanaIngreso extends JFrame implements ActionListener {
             }
             
             
+            
         } else if (e.getSource() == this.panelBotones.btnCancelar) {
             System.exit(0);
         }
         
+
     }
 }

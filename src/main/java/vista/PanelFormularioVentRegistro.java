@@ -18,13 +18,13 @@ import javax.swing.JTextField;
 public class PanelFormularioVentRegistro extends JPanel {
 
     private JLabel lblCodigo;
-     private JTextField ingCodigo;
-      private JTextField ingFecha;
+     public  JTextField ingCodigo;
+      public  JTextField ingFecha;
       private JLabel lblFecha;
-      private JTextField ingNombTipo;
+      public  JTextField ingNombTipo;
       private JLabel lblNombTipo;
       private  JLabel lblAccion;
-    private JComboBox combBoxAccion;
+    public  JComboBox combBoxAccion;
     
     public PanelFormularioVentRegistro() {
     inicializarComponentes();
@@ -53,7 +53,6 @@ public class PanelFormularioVentRegistro extends JPanel {
         this.ingFecha = new JTextField();
         this.add(ingFecha);
         this.ingFecha.setColumns(10);
-
         
         this.lblAccion = new JLabel("ACCIÓN TOMADA");
         this.add(this.lblAccion);
@@ -62,6 +61,7 @@ public class PanelFormularioVentRegistro extends JPanel {
         this.combBoxAccion.addItem("Ingresado");
         this.combBoxAccion.addItem("Borrado");
         this.combBoxAccion.addItem("Modificado");
+        this.combBoxAccion.addItem("Todo");
         this.add(this.combBoxAccion);
         
     }

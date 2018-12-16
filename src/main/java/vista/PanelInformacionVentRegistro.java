@@ -19,9 +19,9 @@ public class PanelInformacionVentRegistro extends JPanel {
 
     
     private JPanel panelBotones;
-    private JButton btnBuscar;
-    private JButton btnCancelar;
-    private PanelMostrarInfoVentRegistro panelMostrarInfo;
+    public  JButton btnBuscar;
+    public  JButton btnLimpiar;
+    public  PanelMostrarInfoVentRegistro panelMostrarInfo;
     private   JLabel lblNombre ;
     private   JLabel lblCodigo ;
     private  JLabel lblCantidad ;
@@ -29,6 +29,7 @@ public class PanelInformacionVentRegistro extends JPanel {
     private  JLabel lblPresentacion ;
     private JLabel lblUnidadMedida;
     private JLabel lblFecha;
+    private JLabel lblAccion;
     
     
     public PanelInformacionVentRegistro() {
@@ -53,8 +54,8 @@ public class PanelInformacionVentRegistro extends JPanel {
         this.btnBuscar = new JButton("Buscar");
         panelBotones.add(this.btnBuscar);
 
-        this.btnCancelar = new JButton("Limpiar");
-        panelBotones.add(this.btnCancelar);
+        this.btnLimpiar = new JButton("Limpiar");
+        panelBotones.add(this.btnLimpiar);
 
         JPanel panelMostrarListaInfo = new JPanel();
         this.add(panelMostrarListaInfo, BorderLayout.WEST);
@@ -80,5 +81,8 @@ public class PanelInformacionVentRegistro extends JPanel {
         
         this.lblFecha = new JLabel("Fecha:");
         panelMostrarListaInfo.add(this.lblFecha);
+        
+        this.lblAccion = new JLabel("Accion:");
+        panelMostrarListaInfo.add(this.lblAccion);
     }
 }

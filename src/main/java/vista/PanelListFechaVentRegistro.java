@@ -6,10 +6,11 @@
 package vista;
 
 import java.awt.BorderLayout;
+import javax.swing.DefaultListModel;
 
 import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -17,20 +18,26 @@ import javax.swing.JScrollBar;
  */
 public class PanelListFechaVentRegistro extends JPanel {
     
-    private JList listaFecha;
-    private JScrollBar scrollListFecha;
+    public  JList listaFecha;
+    private JScrollPane scrollListFecha;
+    public DefaultListModel modeloLista;
+    
     
     public PanelListFechaVentRegistro() {
         inicializarComponentes();
     }
 
     private void inicializarComponentes() {
-        	this.setLayout(new BorderLayout(0, 0));
+    
+                modeloLista = new DefaultListModel();
+                
+
+            this.setLayout(new BorderLayout(0, 0));
 		
-		listaFecha = new JList();
+		listaFecha = new JList(modeloLista);
 		this.add(listaFecha, BorderLayout.CENTER);
 		
-		scrollListFecha = new JScrollBar();
+		scrollListFecha = new JScrollPane(this.listaFecha,JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		this.add(scrollListFecha, BorderLayout.EAST);
     }
     

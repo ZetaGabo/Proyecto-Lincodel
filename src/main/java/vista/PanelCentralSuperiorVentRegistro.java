@@ -15,8 +15,8 @@ import javax.swing.JPanel;
  */
 public class PanelCentralSuperiorVentRegistro extends JPanel{
     
-    private PanelFormularioVentRegistro panelFormulario;
-    private PanelInformacionVentRegistro panelInformacion;
+    public  PanelFormularioVentRegistro panelFormulario;
+    public  PanelInformacionVentRegistro panelInformacion;
     public PanelCentralSuperiorVentRegistro(){
         inicializarComponentes();
     }

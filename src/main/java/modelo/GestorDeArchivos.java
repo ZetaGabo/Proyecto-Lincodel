@@ -12,9 +12,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 /**
@@ -54,7 +52,7 @@ public class GestorDeArchivos {
         }.getType();
         Gson gson = new Gson();
         String json = gson.toJson(lista, listType);
-
+        System.out.println(json + " json");
         String jsonCodificado = codificador.codificarString(json);
 
         try (FileWriter file = new FileWriter(RUTA + NOMBRE)) {
@@ -66,7 +64,7 @@ public class GestorDeArchivos {
         return valorReturn;
     }
 
-    public ArrayList<Object> recuperarJsonGenerico(String NOMBRE/*objetos.json*/) {
+    public ArrayList<Object> recuperarJsonGenerico(String NOMBRE) {
         Gson gson = new Gson();
 
         String textDecodificado = DecoJson(NOMBRE);
@@ -74,13 +72,25 @@ public class GestorDeArchivos {
         return gson.fromJson(textDecodificado, new TypeToken<List<Object>>() {
         }.getType());
     }
+    
+    public ArrayList<Historial> recuperarJsonHistorial(String NOMBRE) {
+        Gson gson = new Gson();
 
+        String textDecodificado = DecoJson(NOMBRE);
+
+        return gson.fromJson(textDecodificado, new TypeToken<List<Historial>>() {
+        }.getType());
+    }
+    
     public ArrayList<Usuario> recuperarJsonUsuario(String NOMBRE/*objetos.json*/) {
         Gson gson = new Gson();
 
         String textDecodificado = DecoJson(NOMBRE);
+        System.out.println(textDecodificado);
+
         return gson.fromJson(textDecodificado, new TypeToken<List<Usuario>>() {
         }.getType());
+
     }
 
     public ArrayList<Insumo> recuperarJsonInsumos(String NOMBRE/*insumos.json*/) {
@@ -94,31 +104,74 @@ public class GestorDeArchivos {
     private String DecoJson(String NOMBRE) {
         BufferedReader br = null;
         try {
+            System.out.println(RUTA + " RUTA");
+            System.out.println(NOMBRE + " NOMBRE");
             br = new BufferedReader(new FileReader(RUTA + NOMBRE));
         } catch (Exception e) {
             e.printStackTrace();
         }
 
-        return codificador.decodificar(br.lines().collect(Collectors.joining()));
+        return this.codificador.decodificar(br.lines().collect(Collectors.joining()));
 
     }
 
     public boolean removerObjetoJson(Insumo i, String NOMBRE) {
-        if(recuperarJsonGenerico(NOMBRE)!=null){
-        ArrayList<Insumo> insumos = recuperarJsonInsumos(NOMBRE);
-            
-         insumos.removeIf(x->x.equals(i));
-        
-            
-        ArrayList<Object> obj = new ArrayList<>();
-            for (Insumo insumo: insumos) {
-                obj.add((Object)insumo);
-            }
-        return escritorJson(obj, NOMBRE);
-        }
-        else{ 
-            return false;
+        if (recuperarJsonGenerico(NOMBRE) != null) {
+            ArrayList<Insumo> insumos = recuperarJsonInsumos(NOMBRE);
+
+            ArrayList<Object> obj = new ArrayList<>();
+            for (Insumo insumo : insumos) {
+                if (!(insumo.getCodigo().equals(i.getCodigo())
+                        && insumo.getCantidad() == i.getCantidad()
+                        && insumo.getNombreInsumo().equals(i.getNombreInsumo())
+                        && insumo.getPresentacion().equals(i.getPresentacion())
+                        && insumo.getTipo().equals(i.getTipo())
+                        && insumo.getFecha().equals(i.getFecha())
+                        && insumo.getUnidadMedida().equals(i.getUnidadMedida()))) {
+                    obj.add((Object) insumo);
                 }
+
+            }
+            return escritorJson(obj, NOMBRE);
+        } else {
+            return false;
+        }
     }
     
+    public boolean modificarObjetoJson(Insumo i, String NOMBRE, int nuevaCantidad){
+        
+        if (recuperarJsonGenerico(NOMBRE) != null) {
+            ArrayList<Insumo> insumos = recuperarJsonInsumos(NOMBRE);
+
+            ArrayList<Object> obj = new ArrayList<>();
+            for (Insumo insumo : insumos) {
+                if ((insumo.getCodigo().equals(i.getCodigo())
+                        && insumo.getCantidad() == i.getCantidad()
+                        && insumo.getNombreInsumo().equals(i.getNombreInsumo())
+                        && insumo.getPresentacion().equals(i.getPresentacion())
+                        && insumo.getTipo().equals(i.getTipo())
+                        && insumo.getFecha().equals(i.getFecha())
+                        && insumo.getUnidadMedida().equals(i.getUnidadMedida()))) {
+                    insumo.setCantidad(nuevaCantidad);
+                }
+                
+                obj.add((Object) insumo);
+            }
+            return escritorJson(obj, NOMBRE);
+        } else {
+            return false;
+        }
+    }
+    
+    //funcion de prueba
+    public  boolean borrarHistorial(String NOMBRE){
+        boolean valorReturn =false;
+        try (FileWriter file = new FileWriter(RUTA + NOMBRE)) {
+            file.write("");
+           valorReturn=true;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return valorReturn;
+    }
 }

@@ -17,9 +17,11 @@ public class InicioSesion {
     }
 
     public boolean verificarUsuario(String nombreUsuarioIngresado, String contraseñaIngresada) {
-
+        if(this.usuarios!=null){
         return this.usuarios.stream().anyMatch(u -> u.getContraseña().equals(contraseñaIngresada) && u.getNombreUsuario().equals(nombreUsuarioIngresado));
-
+        }else{
+            return false;
+        }
     }
 
     private void obtenerUsuariosAlmacenado() {

@@ -44,8 +44,9 @@ public class PanelMenuVentPrincipal extends JPanel implements ActionListener{
 		this.mntmCerrarSesion = new JMenuItem("Cerrar Sesión");
 		mnArchivo.add(this.mntmCerrarSesion);
 		
-                this.mntmSalir = new JMenuItem("Cerrar Sesión");
+                this.mntmSalir = new JMenuItem("Salir");
 		mnArchivo.add(this.mntmSalir);
+                this.mntmSalir.addActionListener(this);
                 
 		JMenu mnEditar = new JMenu("Editar");
 		menu.add(mnEditar);
@@ -92,6 +93,10 @@ public class PanelMenuVentPrincipal extends JPanel implements ActionListener{
                         "Lincodel 2018\nProyecto con propósito de aprendizaje\nUfro - "
                                 + "facultad de Ingenieria informatica","acerca"
                         ,JOptionPane.INFORMATION_MESSAGE);
+            }else if(this.mntmSalir==e.getSource()){
+                this.setVisible(false);
+                System.exit(0);
+                
             }
             
         }
